@@ -9,13 +9,14 @@ This would facilitate future enhancement to easily extend the process into a gen
 of reading input messages from a variety of formats (csv, JSON, XML) and outputting to a variety of
 APIs.
 
-Currently, an example.csv is read in from `/test` and the audit logs are outputted to `/test/output/output.csv`
+Currently, an example.csv is read in from `/test/input.csv` and the audit logs are outputted to `/test/audit.csv`
 
 Please note: I cannot locate a free testing API endpoint for MailJet, and despite having followed the guide on access tokens;
 the WebJet service will only return STATUS 400 for no account.
 
-### Execution
-``` the project can be executed in ts-node, or compiled via npm start```
+### 
+The project may be executed in ts-node or via the following:
+`npm i;npm build; npm start`
 
 ### Assumptions & Notes
 - 'a segment of customer data' refers to the 'text message' csv value

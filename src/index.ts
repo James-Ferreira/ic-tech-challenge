@@ -1,5 +1,4 @@
 import SMSDirector from "./SMSDirector.js";
-import CSVFile from "./csv-input/CSVFile.js";
 
 // set-up
 const inputDirectory ='./example';

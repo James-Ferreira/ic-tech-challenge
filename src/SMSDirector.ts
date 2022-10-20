@@ -2,7 +2,6 @@ import ClientMsgBuilder from "./csv-input/Models/ClientMsgBuilder.js";
 import CSVFile from "./csv-input/CSVFile.js";
 import MailJetAPI from "./api-output/MailJetAPI.js";
 import MailJetResponseMsgBuilder from "./api-output/Models/MailJetResponseMsgBuilder.js";
-import IMailJetResponseMsg from "./api-output/Models/IMailJetResponseMsg.js";
 import ClientMsg from "./csv-input/Models/ClientMsg.js";
 import IClientMsg from "./csv-input/Models/IClientMsg.js";
 import MailJetResponseMsg from "./api-output/Models/MailJetResponseMsg.js";
@@ -35,7 +34,7 @@ export default class SMSDirector {
         // Send the ClientMsg to the SMSService
         const reply = await this.sendSMSBatch(clientMsgs);
 
-        // 4. write successes/failures to a file
+        // Write successes/failures to a file
         const auditFile = new CSVFile(this.outputDirectory, this.outputFilename)
 
         console.log(`\nThere were [${reply.failedIndices.length}] failed sends, and [${reply.successfulIndices.length}] successful sends`)
@@ -51,10 +50,10 @@ export default class SMSDirector {
     private async CSVToClientMsg(csvFile: CSVFile): Promise<ClientMsg[]>{
         const result = new Array<ClientMsg>();
         const builder = new ClientMsgBuilder();
-        const lines = await csvFile.readLines();
 
+        // split the csv line to access each value, and build a ClientMsg
+        const lines = await csvFile.readLines();
         for (const [index, line] of lines.entries()) {
-            // split the csv line to access each value
             const split = line.split(',');
             if (split.length != 4) {
                 console.error(`Unexpected format on line ${index}: ${line}, skipping line`)
@@ -68,6 +67,7 @@ export default class SMSDirector {
                     .message(split[3])
                     .build()
             )
+            
             // clean-up
             builder.reset();
         }
