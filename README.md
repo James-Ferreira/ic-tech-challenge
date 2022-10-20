@@ -16,7 +16,7 @@ the WebJet service will only return STATUS 400 for no account.
 
 ### 
 The project may be executed in ts-node or via the following:
-`npm i;npm build; npm start`
+`npm i;npm run build; npm run start`
 
 ### Assumptions & Notes
 - 'a segment of customer data' refers to the 'text message' csv value
