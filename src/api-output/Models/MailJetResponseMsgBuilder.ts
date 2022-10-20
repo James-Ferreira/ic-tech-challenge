@@ -3,7 +3,7 @@ import IMailJetResponseMsg from "./IMailJetResponseMsg.js";
 import MailJetResponseMsg from "./MailJetResponseMsg.js";
 
 /**
- * Builder class for a ClientMsg, handles sanitisation and subsequent building of a MailJetResponseMsg
+ * Builder class for a MailJetResponseMsg
  */
 export default class MailJetResponseMsgBuilder implements Builder<MailJetResponseMsg>{
     protected _successfulIndices: number[];
