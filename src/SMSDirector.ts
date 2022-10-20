@@ -78,7 +78,7 @@ export default class SMSDirector {
      * Sends a batch of SMSs (ClientMsgs) to the MailJetAPI
      * @param batch
      */
-    public async sendSMSBatch(batch: IClientMsg[]): Promise<MailJetResponseMsg> {
+    private async sendSMSBatch(batch: IClientMsg[]): Promise<MailJetResponseMsg> {
         const smsAPI = new MailJetAPI();
         const replyBuilder = new MailJetResponseMsgBuilder();
 
